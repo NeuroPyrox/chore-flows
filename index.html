@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Specifications</title>
+  </head>
+  <body></body>
+  <script type="module">
+    const loginFrames = emailAddress => [
+      button("Login with Google"),
+      "Press the login button",
+      div(
+        p("Sign in with Google"),
+        p("Choose an account to continue to chores"),
+        button(emailAddress),
+        button("use another account")
+      ),
+      `Select ${emailAddress}`,
+    ]
+    const test1 = {
+      title: "An uninvited user logs in and out",
+      frames: [
+        ...loginFrames("random-uninvited-user@gmail.com"),
+        div(
+          p(
+            "Your email address is not recognized. Please ask the admin to add it so you can gain access."
+          ),
+          button("Logout")
+        ),
+        "Press the logout button",
+        button("Login with Google"),
+      ],
+    };
+    const test2 = {
+      title: "A kid logs in and out",
+      frames: [
+        ...loginFrames("kid@gmail.com"),
+        div(
+          "Kid",
+          button("Logout"),
+          div(
+            div("Dishes", checkbox, "Reward: 1", "Stake: 2"),
+            div("Trash", checkbox, "Reward: 3", "Stake: 4"),
+            div("Sweep", checkbox, "Reward: 5", "Stake: 6")
+          ),
+          "5 points"
+        ),
+        "Press the logout button",
+        button("Login with Google"),
+      ],
+    };
+    const test3 = {
+      title: "A parent logs in and out",
+      frames: [
+        ...loginFrames("parent@gmail.com"),
+        div(
+          "Parent"
+          button("Logout")
+          "Calendar",
+          table(
+            tr(
+              th("Chore")
+              th("Sunday"),
+              th("Monday"),
+              th("Tuesday"),
+              th("Wednesday"),
+              th("Thursday"),
+              th("Friday"),
+              th("Saturday")
+            ),
+            tr(
+              td("Supervise"),
+              td("Alice"),
+              td("Bob"),
+              td("Alice"),
+              td("Bob"),
+              td("Alice"),
+              td("Bob"),
+              td("Alice")
+            ),
+            tr(
+              td("Dishes"),
+              td("Alice"),
+              td("Alice"),
+              td("Bob"),
+              td("Bob"),
+              td("Alice"),
+              td("Alice"),
+              td("Bob")
+            )
+          ),
+          "Incentives",
+          table(
+            tr(
+              th("Chore"),
+              th("Reward"),
+              th("Stake")
+            ),
+            tr(
+              td("Supervise"),
+              td("1"),
+              td("2")
+            ),
+            tr(
+              td("Trash"),
+              td("3"),
+              td("4")
+            )
+          ),
+          "Points",
+          table(
+            tr(
+              th("Kid")
+              th("Points")
+            ),
+            tr(
+              td("Alice"),
+              td("1")
+            ),
+            tr(
+              td("Bob"),
+              td("2")
+            )
+          ),
+          button("Penalize supervisor"),
+          div(
+            select("Alice", "Bob"),
+            textInput(),
+            button("Take")
+            button("Give")
+          )
+        )
+      ],
+    };
+  </script>
+</html>
